@@ -1,0 +1,166 @@
+.backgroundContainer {
+  position: absolute;
+  top: 15vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+@keyframes bounce-card {
+  0%,
+  100% {
+    transform: translateY(-3%);
+  }
+
+  50% {
+    transform: translateY(0%);
+  }
+  /* 
+  70% {
+    transform: translateY(-1%);
+  } */
+}
+
+@keyframes cards-fadein {
+  0% {
+    opacity: 0;
+  }
+
+  60% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.background {
+  object-fit: contain;
+  margin-top: -30%;
+  margin-right: 0;
+  width: 100%;
+  margin-left: 2%;
+  padding-right: 6%;
+  padding-left: 6%;
+}
+
+.home-cards {
+  animation: cards-fadein 2s linear;
+  -webkit-animation: cards-fadein 2s linear;
+  display: inline;
+}
+
+.home-card {
+  position: absolute;
+  width: 30%;
+
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: bounce-card;
+  -webkit-animation-name: bounce-card;
+  animation-duration: 5s;
+  -webkit-animation-duration: 5s;
+}
+
+.card1 {
+}
+
+.card2 {
+}
+
+.card3 {
+  animation-delay: -2800ms;
+}
+
+.card1 {
+  top: -13%;
+  left: 11%;
+}
+
+.card2 {
+  top: -9%;
+  left: 44%;
+}
+
+.card3 {
+  top: 82%;
+  left: 28%;
+}
+@media (min-width: 640px) {
+  .background {
+    width: 68%;
+    margin-bottom: 0%;
+    margin-left: 6%;
+    margin-top: -13%;
+    padding-right: 0%;
+    padding-left: 0%;
+  }
+
+  .card1,
+  .card2,
+  .card3 {
+    width: 30%;
+  }
+
+  .card1 {
+    left: 7%;
+    top: -8%;
+  }
+
+  .card2 {
+    left: 46%;
+    top: -4%;
+  }
+
+  .card3 {
+    left: 26%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .backgroundContainer {
+    justify-content: flex-end;
+  }
+
+  .background {
+    width: 70%;
+    padding: 0;
+    margin-top: 0;
+    margin-right: -14%;
+    margin-bottom: 9%;
+    margin-left: 6%;
+  }
+
+  .card1,
+  .card2,
+  .card3 {
+    width: 30%;
+  }
+
+  .card1 {
+    top: -7%;
+    left: 7.5%;
+  }
+
+  .card2 {
+    left: 45%;
+    top: -3.5%;
+  }
+
+  .card3 {
+    left: 26.5%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .background {
+    width: 50%;
+    margin-right: 7%;
+  }
+}

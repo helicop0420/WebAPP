@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  tests:
+    name: "Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: supabase/setup-cli@v1.1.1
+        with:
+          version: 1.12.2
+      - name: Supabase start
+        run: supabase start
+      - name: Install requirements
+        run: npm ci
+      - name: Start Supabase Instance
+        run: npm run db local start
+      - name: Create test env file
+        run: npm run db local generate_env .env.test.local
+      - name: Run Tests
+        run: npm run test:ci
+
+  build:
+    name: "Build and Lint"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install requirements
+        run: npm ci
+      - name: Create fake env file
+        run: cp .env.example .env.local
+      - name: Run Linter
+        run: npm run lint
+      - name: Build Project
+        run: npm run build
+
+  deploy:
+    name: "Deploy to Prod"
+    runs-on: ubuntu-latest
+    environment: Production
+    needs: [tests, build]
+    # Only run on main
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetches history from all branches
+      - name: Install requirements
+        run: npm ci
+      - name: Run Migration
+        run: npm run db up
+        env:
+          SUPABASE_DB_URL: ${{ secrets.PROD_DB_URL }}
+
+      - name: Merge main -> prod
+        run: |
+          git config --global user.name 'Github Actions'
+          git config --global user.email '${{ github.event.pusher.email }}'
+          git checkout prod
+          git merge --ff-only main
+          git push origin prod

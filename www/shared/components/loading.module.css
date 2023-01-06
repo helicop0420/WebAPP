@@ -1,0 +1,16 @@
+@keyframes loading-animation {
+  0% {
+    width: 10%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+.loading_bar {
+  animation-name: loading-animation;
+  animation-duration: 800ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  @apply bg-green-900;
+}

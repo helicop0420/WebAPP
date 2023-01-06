@@ -1,0 +1,32 @@
+.hero input:-webkit-autofill,
+.hero input:-webkit-autofill:hover,
+.hero input:-webkit-autofill:focus,
+.loginForm input:-webkit-autofill,
+.loginForm input:-webkit-autofill:hover,
+.loginForm input:-webkit-autofill:focus
+ {
+    -webkit-text-fill-color: #828B93;
+    background-color: #1b1b6c;
+    transition: background-color 5000s ease-in-out 0s;
+}
+.shadowPrimary{
+        box-shadow:0px 0px 100px rgba(21, 128, 61, 0.5) ;
+}
+
+@keyframes  arc-animation {
+     0%, 100% {
+         opacity: 50%;
+     }
+        50% {
+            opacity: 100%;
+        }
+  
+ }
+
+ .animateArc {
+     animation-name: arc-animation;
+     animation-duration: 800ms;
+     animation-iteration-count: infinite;
+     animation-delay: 300ms;
+     animation-timing-function: ease;
+ }

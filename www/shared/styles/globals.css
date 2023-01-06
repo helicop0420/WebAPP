@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    color: white;
+    background: black;
+  }
+}
+.slick-track {
+  display: flex;
+  height:100%;
+ 
+}
+
+ .slick-track > .slick-slide {
+    height: 100%;
+    display: flex;
+ }
+     .slick-track > .slick-slide  > div  {
+      display: flex;
+      height: 100%;
+    }
+
+.space-x-4 > .slick-list >  .slick-track {
+ @apply h-full flex space-x-[26px] justify-start py-2 px-1
+ }
+.space-x-4 > .slick-list >  .slick-track > .slick-slide   {
+ @apply h-full flex w-auto justify-between !important
+ }
+.space-x-4 > .slick-list >  .slick-track > .slick-current   {
+ @apply ring-green-700
+    cursor-pointer rounded-md ring-2 ring-offset-2 !important
+ }
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #828B93;
+  background-color: #1b1b6c;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.user-card-image > span > .box-content{
+  @apply border-solid border-4 border-green-700  rounded-[8px]  !important
+} */
+
+::-webkit-datetime-edit {
+  padding: 0.5rem;
+}
+
+::-webkit-datetime-edit-text {
+  padding: 0 0.3rem;
+}
+
+
+input[type="date"] {
+  background: transparent;
+  /* color: yellow; */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 12px;
+  height: 20px;
+  width: 20px;
+  color: white;
+  /* background-color: green; */
+  background-image: url('https://cdn-icons-png.flaticon.com/512/747/747310.png');
+}
